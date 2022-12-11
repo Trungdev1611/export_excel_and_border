@@ -43,7 +43,7 @@ const ExportExcel = ({
     // sheet.addRows(rows);
     sheet.addRows(dataRowExcel);
 
-    //lap qua tat ca nhung o hien hanh cua cot
+    //lap qua tat ca nhung o hien hanh cua cot de thuc hien border
     for (let i = 1; i <= columnsExcel.length; i++) {
       sheet.getColumn(i).eachCell(function (cell, rowNumber) {
         cell.style.font = { name: "Comic Sans MS" };
@@ -54,6 +54,16 @@ const ExportExcel = ({
           bottom: { style: "thin" },
           right: { style: "thin" },
         };
+        sheet.getRow(1).height = 30;
+        //hightlight dong dau tien
+        if (rowNumber == 1) {
+          cell.style.fill = {
+            type: "pattern",
+            pattern: "solid",
+            fgColor: { argb: "f5f5f0" }, //bo dau # dang truoc di o hexcolor
+            // bgColor: { argb: "FFFF0000" },
+          };
+        }
       });
     }
 
